@@ -41,8 +41,10 @@ namespace OpenNMT
             request.Method = httpMethod.POST.ToString();
             request.ContentType = "application/json";
             
-            //request.KeepAlive = true;
-
+            //We need to close and open the connection every time to avoid
+            //errors with unfinished requests
+            request.KeepAlive = false;
+            
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 streamWriter.Write(serializedSourceString);
