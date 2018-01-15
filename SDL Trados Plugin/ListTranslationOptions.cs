@@ -44,6 +44,22 @@ namespace OpenNMT
             get { return GetStringParameter("port"); }
             set { SetStringParameter("port", value); }
         }
+        public string client
+        {
+            get { return GetStringParameter("client"); }
+            set { SetStringParameter("client", value); }
+        }
+        public string subject
+        {
+            get { return GetStringParameter("subject"); }
+            set { SetStringParameter("subject", value); }
+        }
+
+        public string otherFeatures
+        {
+            get { return GetStringParameter("other_features"); }
+            set { SetStringParameter("other_features", value); }
+        }
 
         public string languageDirectionSource
         {

@@ -126,20 +126,35 @@ namespace OpenNMT
 
         
         private string searchInServer(string sourceString)
-        {
-            string source = sourceString
-                .Replace("&", "&amp;")
-                .Replace("<", "&lt;")
-                .Replace(">", "&gt;")
-                .Replace("\"", "&quot;")
-                .Replace("'", "&apos;");
-            
+        {   
+            // Use basic connection settings
             string serverAddress = _options.serverAddress;
             int port = int.Parse(_options.port);
 
+            // Use features
+            string client = _options.client;
+            string subject = _options.subject;
+            List<string> features = new List<string>();
+            
+            if (!String.IsNullOrEmpty(client))
+            {
+                features.Add(client);
+            }
+
+            if (!String.IsNullOrEmpty(subject))
+            {
+                features.Add(subject);
+            }
+
+            if (!String.IsNullOrEmpty(_options.otherFeatures))
+            {
+                features.AddRange(_options.otherFeatures.Split(';'));
+            }
+
             //Create the rest client with every call?
             RestClient rClient = new RestClient(serverAddress,port);
-            string translatedSentence = rClient.getTranslation(source);
+
+            string translatedSentence = rClient.getTranslation(sourceString, features);
 
             return translatedSentence;
 
