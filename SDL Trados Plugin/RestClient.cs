@@ -24,7 +24,7 @@ namespace OpenNMT
 
         private string uri;
 
-        public string getTranslation(string sourceString)
+        public string getTranslation(string sourceString, List<string> features)
         {
             string responseJson = string.Empty;
             string translation = string.Empty;
@@ -33,6 +33,8 @@ namespace OpenNMT
             JsonTranslationResponse JsonTranslation = new JsonTranslationResponse();
             
             JsonTranslation.src = sourceString;
+            JsonTranslation.feats = features;
+            
             ListJson.Add(JsonTranslation);
 
             string serializedSourceString = JsonConvert.SerializeObject(ListJson);
@@ -89,6 +91,9 @@ namespace OpenNMT
         public string tgt { get; set; }
 
         public string src { get; set; }
+
+        public List<string> feats { get; set; }
+
         [JsonIgnore]
         public float pred_score { get; set; }
         [JsonIgnore]

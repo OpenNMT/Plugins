@@ -27,12 +27,18 @@ namespace OpenNMT
         {
             this.address_txtbox.Text = Options.serverAddress;
             this.port_txtbox.Text = Options.port;
+            this.textBoxCustomer.Text = Options.client;
+            this.textBoxSubject.Text = Options.subject;
+            this.textBoxOtherFeatures.Text = Options.otherFeatures;
         }
 
         private void Save_btn_Click(object sender, EventArgs e)
         {
             Options.serverAddress = this.address_txtbox.Text.Trim();
             Options.port = this.port_txtbox.Text.Trim();
+            Options.client = this.textBoxCustomer.Text.Trim();
+            Options.subject = this.textBoxSubject.Text.Trim();
+            Options.otherFeatures = this.textBoxOtherFeatures.Text.Trim();
             this.DialogResult = DialogResult.OK;
 
         }
@@ -79,6 +85,26 @@ namespace OpenNMT
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTipOtherFeatures_Popup(object sender, PopupEventArgs e)
         {
 
         }
