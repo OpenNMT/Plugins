@@ -25,6 +25,12 @@ namespace OpenNMT
 
         private void OpenNMTConfDialog_Load(object sender, EventArgs e)
         {
+
+            if (Options.framework == "lua")
+                this.rButtonLua.Checked = true;
+            else
+                this.rButtonWizard.Checked = true;
+
             this.address_txtbox.Text = Options.serverAddress;
             this.port_txtbox.Text = Options.port;
             this.textBoxCustomer.Text = Options.client;
@@ -34,6 +40,13 @@ namespace OpenNMT
 
         private void Save_btn_Click(object sender, EventArgs e)
         {
+
+
+            if (this.rButtonLua.Checked)
+                Options.framework = "lua";
+            else
+                Options.framework = "wizard";
+
             Options.serverAddress = this.address_txtbox.Text.Trim();
             Options.port = this.port_txtbox.Text.Trim();
             Options.client = this.textBoxCustomer.Text.Trim();
@@ -105,6 +118,16 @@ namespace OpenNMT
         }
 
         private void toolTipOtherFeatures_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

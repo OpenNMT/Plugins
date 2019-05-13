@@ -33,7 +33,13 @@ namespace OpenNMT
             get { return GetStringParameter("languageDirection"); }
             set { SetStringParameter("languageDirection", value); }
         }
-       
+
+        public string framework
+        {
+            get { return GetStringParameter("framework"); }
+            set { SetStringParameter("framework", value); }
+        }
+
         public string serverAddress
         {
             get { return GetStringParameter("serverAddress"); }

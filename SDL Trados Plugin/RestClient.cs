@@ -11,7 +11,7 @@ namespace OpenNMT
     {
         public RestClient(string serverAddress, int serverPort)
         {
-            uri = "http://" + serverAddress + ":" + Convert.ToString(serverPort) + "/translator/translate";
+            uri = "http://" + serverAddress + ":" + Convert.ToString(serverPort) + "/translate";
         }
 
         private enum httpMethod
@@ -29,15 +29,21 @@ namespace OpenNMT
             string responseJson = string.Empty;
             string translation = string.Empty;
 
-            List <JsonTranslationResponse> ListJson = new List<JsonTranslationResponse>();
-            JsonTranslationResponse JsonTranslation = new JsonTranslationResponse();
-            
-            JsonTranslation.src = sourceString;
-            JsonTranslation.feats = features;
-            
-            ListJson.Add(JsonTranslation);
 
-            string serializedSourceString = JsonConvert.SerializeObject(ListJson);
+            TextField Source = new TextField
+            {
+                Text = sourceString + string.Join("",features.ToArray())
+            };
+
+            Request SourceRequest = new Request
+            {
+                SourceText = new TextField[] { Source }
+            };
+
+
+
+
+            string serializedSourceString = JsonConvert.SerializeObject(SourceRequest);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.Method = httpMethod.POST.ToString();
@@ -72,34 +78,34 @@ namespace OpenNMT
                 }
             }
 
-            //We can't deserialize with JsonConvert.DeserializeObject because 
-            //the json returned is a two dimensional array but the json request is 
-            //serialized as a signle-dimensional array
-            JArray jsonTranslation = JArray.Parse(responseJson);
-            translation = jsonTranslation[0][0].SelectToken("tgt").ToString();
+            Response Target = JsonConvert.DeserializeObject<Response>(responseJson);
+
+            translation = Target.TargetText[0][0].Text;
+            
+            //translation = jsonTranslation[0][0].SelectToken("tgt").ToString();
             return translation;
         }
     }
 
-
-    //The json returned from the server. We ignore everything except from
-    //src so we can serialize correctly.
-    public class JsonTranslationResponse
+    
+    public class TextField
     {
 
-        [JsonIgnore]
-        public string tgt { get; set; }
-
-        public string src { get; set; }
-
-        public List<string> feats { get; set; }
-
-        [JsonIgnore]
-        public float pred_score { get; set; }
-        [JsonIgnore]
-        public int n_best { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
+    public class Request
+    {
+        [JsonProperty("src")]
+        public TextField[] SourceText { get; set; }
+    }
+
+    public class Response
+    {
+        [JsonProperty("tgt")]
+        public TextField[][] TargetText { get; set; }
+    }
 
     
 
