@@ -91,7 +91,7 @@ namespace OpenNMT
             // sourceText = sourceText.Replace("foo", "bar");
 
             //Get the translation from the server
-            string translatedSentence = searchInServer(sourceText);
+            string translatedSentence = SearchInServer(sourceText);
 
             if (String.IsNullOrEmpty(translatedSentence))
                 return results;
@@ -125,7 +125,7 @@ namespace OpenNMT
         #endregion
 
         
-        private string searchInServer(string sourceString)
+        private string SearchInServer(string sourceString)
         {   
             // Use basic connection settings
             string serverAddress = _options.serverAddress;
@@ -152,9 +152,11 @@ namespace OpenNMT
             }
 
             //Create the rest client with every call?
-            RestClient rClient = new RestClient(serverAddress,port);
 
-            string translatedSentence = rClient.getTranslation(sourceString, features);
+
+            RestClient rClient = _options.framework == "lua" ? new RestClientLua(serverAddress,port) : new RestClient(serverAddress,port);
+
+            string translatedSentence = rClient.GetTranslation(sourceString, features, _options.featurePosition);
 
             return translatedSentence;
 

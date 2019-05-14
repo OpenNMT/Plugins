@@ -33,6 +33,9 @@
             this.Cancel_btn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBoxFramework = new System.Windows.Forms.GroupBox();
+            this.rButtonWizard = new System.Windows.Forms.RadioButton();
+            this.rButtonLua = new System.Windows.Forms.RadioButton();
             this.groupBoxCon = new System.Windows.Forms.GroupBox();
             this.port_txtbox = new System.Windows.Forms.TextBox();
             this.address_txtbox = new System.Windows.Forms.TextBox();
@@ -48,21 +51,22 @@
             this.labelClientName = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBoxFramework = new System.Windows.Forms.GroupBox();
-            this.rButtonLua = new System.Windows.Forms.RadioButton();
-            this.rButtonWizard = new System.Windows.Forms.RadioButton();
+            this.rButtonFeatTok = new System.Windows.Forms.RadioButton();
+            this.rButtonFeatEnd = new System.Windows.Forms.RadioButton();
+            this.rButtonFeatBeg = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBoxFramework.SuspendLayout();
             this.groupBoxCon.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBoxFeats.SuspendLayout();
-            this.groupBoxFramework.SuspendLayout();
             this.SuspendLayout();
             // 
             // Save_btn
             // 
             this.Save_btn.Location = new System.Drawing.Point(318, 497);
-            this.Save_btn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Save_btn.Margin = new System.Windows.Forms.Padding(6);
             this.Save_btn.Name = "Save_btn";
             this.Save_btn.Size = new System.Drawing.Size(160, 44);
             this.Save_btn.TabIndex = 6;
@@ -74,7 +78,7 @@
             // 
             this.Cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel_btn.Location = new System.Drawing.Point(518, 497);
-            this.Cancel_btn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Cancel_btn.Margin = new System.Windows.Forms.Padding(6);
             this.Cancel_btn.Name = "Cancel_btn";
             this.Cancel_btn.Size = new System.Drawing.Size(160, 44);
             this.Cancel_btn.TabIndex = 7;
@@ -106,6 +110,43 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic";
             // 
+            // groupBoxFramework
+            // 
+            this.groupBoxFramework.Controls.Add(this.rButtonWizard);
+            this.groupBoxFramework.Controls.Add(this.rButtonLua);
+            this.groupBoxFramework.Location = new System.Drawing.Point(4, 16);
+            this.groupBoxFramework.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxFramework.Name = "groupBoxFramework";
+            this.groupBoxFramework.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxFramework.Size = new System.Drawing.Size(624, 156);
+            this.groupBoxFramework.TabIndex = 25;
+            this.groupBoxFramework.TabStop = false;
+            this.groupBoxFramework.Text = "Framework";
+            this.groupBoxFramework.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // rButtonWizard
+            // 
+            this.rButtonWizard.AutoSize = true;
+            this.rButtonWizard.Location = new System.Drawing.Point(13, 80);
+            this.rButtonWizard.Name = "rButtonWizard";
+            this.rButtonWizard.Size = new System.Drawing.Size(162, 29);
+            this.rButtonWizard.TabIndex = 1;
+            this.rButtonWizard.TabStop = true;
+            this.rButtonWizard.Text = "NMT Wizard";
+            this.rButtonWizard.UseVisualStyleBackColor = true;
+            // 
+            // rButtonLua
+            // 
+            this.rButtonLua.AutoSize = true;
+            this.rButtonLua.Location = new System.Drawing.Point(13, 33);
+            this.rButtonLua.Name = "rButtonLua";
+            this.rButtonLua.Size = new System.Drawing.Size(183, 29);
+            this.rButtonLua.TabIndex = 0;
+            this.rButtonLua.TabStop = true;
+            this.rButtonLua.Text = "OpenNMT Lua";
+            this.rButtonLua.UseVisualStyleBackColor = true;
+            this.rButtonLua.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // groupBoxCon
             // 
             this.groupBoxCon.Controls.Add(this.port_txtbox);
@@ -125,7 +166,7 @@
             // 
             this.port_txtbox.AccessibleName = "server_port";
             this.port_txtbox.Location = new System.Drawing.Point(177, 95);
-            this.port_txtbox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.port_txtbox.Margin = new System.Windows.Forms.Padding(6);
             this.port_txtbox.Name = "port_txtbox";
             this.port_txtbox.Size = new System.Drawing.Size(168, 31);
             this.port_txtbox.TabIndex = 16;
@@ -134,7 +175,7 @@
             // 
             this.address_txtbox.AccessibleName = "server_address";
             this.address_txtbox.Location = new System.Drawing.Point(177, 48);
-            this.address_txtbox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.address_txtbox.Margin = new System.Windows.Forms.Padding(6);
             this.address_txtbox.Name = "address_txtbox";
             this.address_txtbox.Size = new System.Drawing.Size(379, 31);
             this.address_txtbox.TabIndex = 14;
@@ -173,6 +214,10 @@
             // 
             // groupBoxFeats
             // 
+            this.groupBoxFeats.Controls.Add(this.label5);
+            this.groupBoxFeats.Controls.Add(this.rButtonFeatBeg);
+            this.groupBoxFeats.Controls.Add(this.rButtonFeatEnd);
+            this.groupBoxFeats.Controls.Add(this.rButtonFeatTok);
             this.groupBoxFeats.Controls.Add(this.textBoxOtherFeatures);
             this.groupBoxFeats.Controls.Add(this.label2);
             this.groupBoxFeats.Controls.Add(this.textBoxSubject);
@@ -183,16 +228,17 @@
             this.groupBoxFeats.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxFeats.Name = "groupBoxFeats";
             this.groupBoxFeats.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBoxFeats.Size = new System.Drawing.Size(620, 227);
+            this.groupBoxFeats.Size = new System.Drawing.Size(635, 382);
             this.groupBoxFeats.TabIndex = 23;
             this.groupBoxFeats.TabStop = false;
             this.groupBoxFeats.Text = "Source Features";
+            this.groupBoxFeats.Enter += new System.EventHandler(this.groupBoxFeats_Enter);
             // 
             // textBoxOtherFeatures
             // 
             this.textBoxOtherFeatures.AccessibleName = "features";
             this.textBoxOtherFeatures.Location = new System.Drawing.Point(216, 138);
-            this.textBoxOtherFeatures.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBoxOtherFeatures.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxOtherFeatures.Name = "textBoxOtherFeatures";
             this.textBoxOtherFeatures.Size = new System.Drawing.Size(330, 31);
             this.textBoxOtherFeatures.TabIndex = 23;
@@ -214,7 +260,7 @@
             // 
             this.textBoxSubject.AccessibleName = "server_port";
             this.textBoxSubject.Location = new System.Drawing.Point(216, 91);
-            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxSubject.Name = "textBoxSubject";
             this.textBoxSubject.Size = new System.Drawing.Size(330, 31);
             this.textBoxSubject.TabIndex = 20;
@@ -237,7 +283,7 @@
             // 
             this.textBoxCustomer.AccessibleName = "server_port";
             this.textBoxCustomer.Location = new System.Drawing.Point(216, 44);
-            this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxCustomer.Name = "textBoxCustomer";
             this.textBoxCustomer.Size = new System.Drawing.Size(330, 31);
             this.textBoxCustomer.TabIndex = 18;
@@ -256,42 +302,47 @@
             this.toolTip2.SetToolTip(this.labelClientName, "Warning! Only use valid values in these text boxes or the system may not be able " +
         "to translate.");
             // 
-            // groupBoxFramework
+            // rButtonFeatTok
             // 
-            this.groupBoxFramework.Controls.Add(this.rButtonWizard);
-            this.groupBoxFramework.Controls.Add(this.rButtonLua);
-            this.groupBoxFramework.Location = new System.Drawing.Point(4, 16);
-            this.groupBoxFramework.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBoxFramework.Name = "groupBoxFramework";
-            this.groupBoxFramework.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBoxFramework.Size = new System.Drawing.Size(624, 156);
-            this.groupBoxFramework.TabIndex = 25;
-            this.groupBoxFramework.TabStop = false;
-            this.groupBoxFramework.Text = "Framework";
-            this.groupBoxFramework.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.rButtonFeatTok.AutoSize = true;
+            this.rButtonFeatTok.Location = new System.Drawing.Point(15, 336);
+            this.rButtonFeatTok.Name = "rButtonFeatTok";
+            this.rButtonFeatTok.Size = new System.Drawing.Size(180, 29);
+            this.rButtonFeatTok.TabIndex = 24;
+            this.rButtonFeatTok.TabStop = true;
+            this.rButtonFeatTok.Text = "To each token";
+            this.rButtonFeatTok.UseVisualStyleBackColor = true;
             // 
-            // rButtonLua
+            // rButtonFeatEnd
             // 
-            this.rButtonLua.AutoSize = true;
-            this.rButtonLua.Location = new System.Drawing.Point(13, 33);
-            this.rButtonLua.Name = "rButtonLua";
-            this.rButtonLua.Size = new System.Drawing.Size(183, 29);
-            this.rButtonLua.TabIndex = 0;
-            this.rButtonLua.TabStop = true;
-            this.rButtonLua.Text = "OpenNMT Lua";
-            this.rButtonLua.UseVisualStyleBackColor = true;
-            this.rButtonLua.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.rButtonFeatEnd.AutoSize = true;
+            this.rButtonFeatEnd.Location = new System.Drawing.Point(15, 293);
+            this.rButtonFeatEnd.Name = "rButtonFeatEnd";
+            this.rButtonFeatEnd.Size = new System.Drawing.Size(448, 29);
+            this.rButtonFeatEnd.TabIndex = 25;
+            this.rButtonFeatEnd.TabStop = true;
+            this.rButtonFeatEnd.Text = "As separate tokens at the end of sentence";
+            this.rButtonFeatEnd.UseVisualStyleBackColor = true;
             // 
-            // rButtonWizard
+            // rButtonFeatBeg
             // 
-            this.rButtonWizard.AutoSize = true;
-            this.rButtonWizard.Location = new System.Drawing.Point(13, 80);
-            this.rButtonWizard.Name = "rButtonWizard";
-            this.rButtonWizard.Size = new System.Drawing.Size(162, 29);
-            this.rButtonWizard.TabIndex = 1;
-            this.rButtonWizard.TabStop = true;
-            this.rButtonWizard.Text = "NMT Wizard";
-            this.rButtonWizard.UseVisualStyleBackColor = true;
+            this.rButtonFeatBeg.AutoSize = true;
+            this.rButtonFeatBeg.Location = new System.Drawing.Point(15, 253);
+            this.rButtonFeatBeg.Name = "rButtonFeatBeg";
+            this.rButtonFeatBeg.Size = new System.Drawing.Size(506, 29);
+            this.rButtonFeatBeg.TabIndex = 26;
+            this.rButtonFeatBeg.TabStop = true;
+            this.rButtonFeatBeg.Text = "As separate tokens at the beginning of sentence";
+            this.rButtonFeatBeg.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 206);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 25);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Add features:";
             // 
             // OpenNMTConfDialog
             // 
@@ -302,19 +353,19 @@
             this.Controls.Add(this.Save_btn);
             this.Controls.Add(this.Cancel_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "OpenNMTConfDialog";
             this.Text = "OpenNMT Configuration";
             this.Load += new System.EventHandler(this.OpenNMTConfDialog_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBoxFramework.ResumeLayout(false);
+            this.groupBoxFramework.PerformLayout();
             this.groupBoxCon.ResumeLayout(false);
             this.groupBoxCon.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBoxFeats.ResumeLayout(false);
             this.groupBoxFeats.PerformLayout();
-            this.groupBoxFramework.ResumeLayout(false);
-            this.groupBoxFramework.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -343,5 +394,9 @@
         private System.Windows.Forms.GroupBox groupBoxFramework;
         private System.Windows.Forms.RadioButton rButtonWizard;
         private System.Windows.Forms.RadioButton rButtonLua;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rButtonFeatBeg;
+        private System.Windows.Forms.RadioButton rButtonFeatEnd;
+        private System.Windows.Forms.RadioButton rButtonFeatTok;
     }
 }

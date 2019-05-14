@@ -31,6 +31,13 @@ namespace OpenNMT
             else
                 this.rButtonWizard.Checked = true;
 
+            if (Options.featurePosition == "start")
+                this.rButtonFeatBeg.Checked = true;
+            else if (Options.featurePosition == "end")
+                this.rButtonFeatEnd.Checked = true;
+            else
+                this.rButtonFeatTok.Checked = true;
+
             this.address_txtbox.Text = Options.serverAddress;
             this.port_txtbox.Text = Options.port;
             this.textBoxCustomer.Text = Options.client;
@@ -46,6 +53,13 @@ namespace OpenNMT
                 Options.framework = "lua";
             else
                 Options.framework = "wizard";
+
+            if (this.rButtonFeatBeg.Checked)
+                Options.featurePosition = "start";
+            else if (this.rButtonFeatEnd.Checked)
+                Options.featurePosition = "end";
+            else
+                Options.featurePosition = "token";
 
             Options.serverAddress = this.address_txtbox.Text.Trim();
             Options.port = this.port_txtbox.Text.Trim();
@@ -128,6 +142,11 @@ namespace OpenNMT
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxFeats_Enter(object sender, EventArgs e)
         {
 
         }

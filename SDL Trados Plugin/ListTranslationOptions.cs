@@ -34,6 +34,12 @@ namespace OpenNMT
             set { SetStringParameter("languageDirection", value); }
         }
 
+        public string featurePosition
+        {
+            get { return GetStringParameter("featurePosition"); }
+            set { SetStringParameter("featurePosition", value); }
+        }
+
         public string framework
         {
             get { return GetStringParameter("framework"); }
