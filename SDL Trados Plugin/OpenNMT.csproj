@@ -111,12 +111,12 @@
       <DependentUpon>OpenNMTConfDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="RestClient.cs" />
-    <Compile Include="ListTranslationOptions.cs" />
-    <Compile Include="ListTranslationProvider.cs" />
-    <Compile Include="ListTranslationProviderElementVisitor.cs" />
-    <Compile Include="ListTranslationProviderFactory.cs" />
-    <Compile Include="ListTranslationProviderWinFormsUI.cs" />
-    <Compile Include="ListTranslationProviderLanguageDirection.cs" />
+    <Compile Include="OpenNMTTranslationOptions.cs" />
+    <Compile Include="OpenNMTTranslationProvider.cs" />
+    <Compile Include="OpenNMTTranslationProviderElementVisitor.cs" />
+    <Compile Include="OpenNMTTranslationProviderFactory.cs" />
+    <Compile Include="OpenNMTTranslationProviderWinFormsUI.cs" />
+    <Compile Include="OpenNMTTranslationProviderLanguageDirection.cs" />
     <Compile Include="PluginResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

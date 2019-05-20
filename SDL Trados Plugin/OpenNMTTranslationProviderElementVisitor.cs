@@ -2,9 +2,9 @@
 
 namespace OpenNMT
 {
-    class ListTranslationProviderElementVisitor : ISegmentElementVisitor
+    class OpenNMTTranslationProviderElementVisitor : ISegmentElementVisitor
     {
-        private ListTranslationOptions _options;
+        private OpenNMTTranslationOptions _options;
         private string _plainText;
         
         public string PlainText
@@ -28,7 +28,7 @@ namespace OpenNMT
             _plainText = "";
         }
 
-        public ListTranslationProviderElementVisitor(ListTranslationOptions options)
+        public OpenNMTTranslationProviderElementVisitor(OpenNMTTranslationOptions options)
         {
             _options = options;
         }

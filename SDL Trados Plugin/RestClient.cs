@@ -157,7 +157,6 @@ namespace OpenNMT
     
     public class TextField
     {
-
         [JsonProperty("text")]
         public string Text { get; set; }
     }

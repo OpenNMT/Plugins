@@ -8,13 +8,13 @@ namespace OpenNMT
     public partial class OpenNMTConfDialog : Form
     {
 
-        public ListTranslationOptions Options
+        public OpenNMTTranslationOptions Options
         {
             get;
             set;
         }
        
-        public OpenNMTConfDialog(ListTranslationOptions options, Sdl.LanguagePlatform.Core.LanguagePair[] languagePairs)
+        public OpenNMTConfDialog(OpenNMTTranslationOptions options, Sdl.LanguagePlatform.Core.LanguagePair[] languagePairs)
         {
             string sSourceCulture = languagePairs[0].SourceCultureName.ToLower();
             string sTargetCulture = languagePairs[0].TargetCultureName.ToLower();

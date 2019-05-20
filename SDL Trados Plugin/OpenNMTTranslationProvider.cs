@@ -13,13 +13,13 @@ namespace OpenNMT
         public static readonly string ListTranslationProviderScheme = "openlistprovider";
 
         #region "ListTranslationOptions"
-        public ListTranslationOptions Options
+        public OpenNMTTranslationOptions Options
         {
             get;
             set;
         }
 
-        public OpenNmtProvider(ListTranslationOptions options)
+        public OpenNmtProvider(OpenNMTTranslationOptions options)
         {
             Options = options;
 
@@ -30,7 +30,7 @@ namespace OpenNMT
 
         public ITranslationProviderLanguageDirection GetLanguageDirection(LanguagePair languageDirection)
         {
-            return new ListTranslationProviderLanguageDirection(this, languageDirection);
+            return new OpenNMTTranslationProviderLanguageDirection(this, languageDirection);
         }
 
         public bool IsReadOnly
@@ -178,7 +178,7 @@ namespace OpenNMT
 
         public TranslationMethod TranslationMethod
         {
-            get { return ListTranslationOptions.ProviderTranslationMethod; }
+            get { return OpenNMTTranslationOptions.ProviderTranslationMethod; }
         }
 
         #region "Uri"
