@@ -7,13 +7,13 @@ using System.Collections.Specialized;
 
 namespace OpenNMT
 {
-    public class ListTranslationProviderLanguageDirection : ITranslationProviderLanguageDirection
+    public class OpenNMTTranslationProviderLanguageDirection : ITranslationProviderLanguageDirection
     {
         #region "PrivateMembers"
         private OpenNmtProvider _provider;
         private LanguagePair _languageDirection;
-        private ListTranslationOptions _options;
-        private ListTranslationProviderElementVisitor _visitor;
+        private OpenNMTTranslationOptions _options;
+        private OpenNMTTranslationProviderElementVisitor _visitor;
         private Dictionary<string, string> _listOfTranslations;
         #endregion
 
@@ -26,15 +26,15 @@ namespace OpenNMT
         /// <param name="provider"></param>
         /// <param name="languages"></param>
         #region "ListTranslationProviderLanguageDirection"
-        public ListTranslationProviderLanguageDirection(OpenNmtProvider provider, LanguagePair languages)
+        public OpenNMTTranslationProviderLanguageDirection(OpenNmtProvider provider, LanguagePair languages)
         {
             #region "Instantiate"
-           // UT.LogMessageToFile("Init ListTranslationProviderLanguageDirection");
+           // UT.LogMessageToFile("Init OpenNMTTranslationProviderLanguageDirection");
             _provider = provider;
             _languageDirection = languages;
             _options = _provider.Options;
 
-            _visitor = new ListTranslationProviderElementVisitor(_options);
+            _visitor = new OpenNMTTranslationProviderElementVisitor(_options);
             _listOfTranslations = new Dictionary<string, string>();
             #endregion
         }
@@ -91,7 +91,7 @@ namespace OpenNMT
             // sourceText = sourceText.Replace("foo", "bar");
 
             //Get the translation from the server
-            string translatedSentence = searchInServer(sourceText);
+            string translatedSentence = SearchInServer(sourceText);
 
             if (String.IsNullOrEmpty(translatedSentence))
                 return results;
@@ -125,7 +125,7 @@ namespace OpenNMT
         #endregion
 
         
-        private string searchInServer(string sourceString)
+        private string SearchInServer(string sourceString)
         {   
             // Use basic connection settings
             string serverAddress = _options.serverAddress;
@@ -152,9 +152,11 @@ namespace OpenNMT
             }
 
             //Create the rest client with every call?
-            RestClient rClient = new RestClient(serverAddress,port);
 
-            string translatedSentence = rClient.getTranslation(sourceString, features);
+
+            RestClient rClient = _options.framework == "lua" ? new RestClientLua(serverAddress,port) : new RestClient(serverAddress,port);
+
+            string translatedSentence = rClient.GetTranslation(sourceString, features, _options.featurePosition);
 
             return translatedSentence;
 

@@ -7,7 +7,7 @@ namespace OpenNMT
     /// This class is used to hold the provider plug-in settings. 
     /// All settings are automatically stored in a URI.
     /// </summary>
-    public class ListTranslationOptions
+    public class OpenNMTTranslationOptions
     {
         #region "TranslationMethod"
         public static readonly TranslationMethod ProviderTranslationMethod = TranslationMethod.MachineTranslation;
@@ -16,13 +16,13 @@ namespace OpenNMT
         #region "TranslationProviderUriBuilder"
         TranslationProviderUriBuilder _uriBuilder;        
 
-        public ListTranslationOptions()
+        public OpenNMTTranslationOptions()
         {
             _uriBuilder = new TranslationProviderUriBuilder(OpenNmtProvider.ListTranslationProviderScheme);
             System.Console.WriteLine(OpenNmtProvider.ListTranslationProviderScheme);
         }
 
-        public ListTranslationOptions(Uri uri)
+        public OpenNMTTranslationOptions(Uri uri)
         {
             _uriBuilder = new TranslationProviderUriBuilder(uri);
         }
@@ -33,7 +33,19 @@ namespace OpenNMT
             get { return GetStringParameter("languageDirection"); }
             set { SetStringParameter("languageDirection", value); }
         }
-       
+
+        public string featurePosition
+        {
+            get { return GetStringParameter("featurePosition"); }
+            set { SetStringParameter("featurePosition", value); }
+        }
+
+        public string framework
+        {
+            get { return GetStringParameter("framework"); }
+            set { SetStringParameter("framework", value); }
+        }
+
         public string serverAddress
         {
             get { return GetStringParameter("serverAddress"); }

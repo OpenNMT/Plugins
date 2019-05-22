@@ -8,13 +8,13 @@ namespace OpenNMT
     public partial class OpenNMTConfDialog : Form
     {
 
-        public ListTranslationOptions Options
+        public OpenNMTTranslationOptions Options
         {
             get;
             set;
         }
        
-        public OpenNMTConfDialog(ListTranslationOptions options, Sdl.LanguagePlatform.Core.LanguagePair[] languagePairs)
+        public OpenNMTConfDialog(OpenNMTTranslationOptions options, Sdl.LanguagePlatform.Core.LanguagePair[] languagePairs)
         {
             string sSourceCulture = languagePairs[0].SourceCultureName.ToLower();
             string sTargetCulture = languagePairs[0].TargetCultureName.ToLower();
@@ -25,6 +25,19 @@ namespace OpenNMT
 
         private void OpenNMTConfDialog_Load(object sender, EventArgs e)
         {
+
+            if (Options.framework == "lua")
+                this.rButtonLua.Checked = true;
+            else
+                this.rButtonWizard.Checked = true;
+
+            if (Options.featurePosition == "start")
+                this.rButtonFeatBeg.Checked = true;
+            else if (Options.featurePosition == "end")
+                this.rButtonFeatEnd.Checked = true;
+            else
+                this.rButtonFeatTok.Checked = true;
+
             this.address_txtbox.Text = Options.serverAddress;
             this.port_txtbox.Text = Options.port;
             this.textBoxCustomer.Text = Options.client;
@@ -34,6 +47,20 @@ namespace OpenNMT
 
         private void Save_btn_Click(object sender, EventArgs e)
         {
+
+
+            if (this.rButtonLua.Checked)
+                Options.framework = "lua";
+            else
+                Options.framework = "wizard";
+
+            if (this.rButtonFeatBeg.Checked)
+                Options.featurePosition = "start";
+            else if (this.rButtonFeatEnd.Checked)
+                Options.featurePosition = "end";
+            else
+                Options.featurePosition = "token";
+
             Options.serverAddress = this.address_txtbox.Text.Trim();
             Options.port = this.port_txtbox.Text.Trim();
             Options.client = this.textBoxCustomer.Text.Trim();
@@ -105,6 +132,21 @@ namespace OpenNMT
         }
 
         private void toolTipOtherFeatures_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxFeats_Enter(object sender, EventArgs e)
         {
 
         }

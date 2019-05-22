@@ -33,34 +33,42 @@
             this.Cancel_btn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBoxFramework = new System.Windows.Forms.GroupBox();
+            this.rButtonWizard = new System.Windows.Forms.RadioButton();
+            this.rButtonLua = new System.Windows.Forms.RadioButton();
             this.groupBoxCon = new System.Windows.Forms.GroupBox();
             this.port_txtbox = new System.Windows.Forms.TextBox();
             this.address_txtbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBoxFeats = new System.Windows.Forms.GroupBox();
+            this.textBoxOtherFeatures = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.textBoxSubject = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCustomer = new System.Windows.Forms.TextBox();
             this.labelClientName = new System.Windows.Forms.Label();
-            this.textBoxOtherFeatures = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.rButtonFeatTok = new System.Windows.Forms.RadioButton();
+            this.rButtonFeatEnd = new System.Windows.Forms.RadioButton();
+            this.rButtonFeatBeg = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.groupBoxFramework.SuspendLayout();
             this.groupBoxCon.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.groupBoxFeats.SuspendLayout();
             this.SuspendLayout();
             // 
             // Save_btn
             // 
-            this.Save_btn.Location = new System.Drawing.Point(212, 318);
-            this.Save_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.Save_btn.Location = new System.Drawing.Point(318, 497);
+            this.Save_btn.Margin = new System.Windows.Forms.Padding(6);
             this.Save_btn.Name = "Save_btn";
-            this.Save_btn.Size = new System.Drawing.Size(107, 28);
+            this.Save_btn.Size = new System.Drawing.Size(160, 44);
             this.Save_btn.TabIndex = 6;
             this.Save_btn.Text = "Save";
             this.Save_btn.UseVisualStyleBackColor = true;
@@ -69,10 +77,10 @@
             // Cancel_btn
             // 
             this.Cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Cancel_btn.Location = new System.Drawing.Point(345, 318);
-            this.Cancel_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.Cancel_btn.Location = new System.Drawing.Point(518, 497);
+            this.Cancel_btn.Margin = new System.Windows.Forms.Padding(6);
             this.Cancel_btn.Name = "Cancel_btn";
-            this.Cancel_btn.Size = new System.Drawing.Size(107, 28);
+            this.Cancel_btn.Size = new System.Drawing.Size(160, 44);
             this.Cancel_btn.TabIndex = 7;
             this.Cancel_btn.Text = "Cancel";
             this.Cancel_btn.UseVisualStyleBackColor = true;
@@ -82,33 +90,62 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 12);
+            this.tabControl1.Location = new System.Drawing.Point(20, 19);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(443, 287);
+            this.tabControl1.Size = new System.Drawing.Size(664, 448);
             this.tabControl1.TabIndex = 23;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.groupBoxFramework);
             this.tabPage1.Controls.Add(this.groupBoxCon);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(8, 39);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(435, 258);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Size = new System.Drawing.Size(648, 401);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic";
             // 
-            // tabPage2
+            // groupBoxFramework
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.groupBoxFeats);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(435, 258);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Advanced";
+            this.groupBoxFramework.Controls.Add(this.rButtonWizard);
+            this.groupBoxFramework.Controls.Add(this.rButtonLua);
+            this.groupBoxFramework.Location = new System.Drawing.Point(4, 16);
+            this.groupBoxFramework.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxFramework.Name = "groupBoxFramework";
+            this.groupBoxFramework.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxFramework.Size = new System.Drawing.Size(624, 156);
+            this.groupBoxFramework.TabIndex = 25;
+            this.groupBoxFramework.TabStop = false;
+            this.groupBoxFramework.Text = "Framework";
+            this.groupBoxFramework.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // rButtonWizard
+            // 
+            this.rButtonWizard.AutoSize = true;
+            this.rButtonWizard.Location = new System.Drawing.Point(13, 80);
+            this.rButtonWizard.Name = "rButtonWizard";
+            this.rButtonWizard.Size = new System.Drawing.Size(162, 29);
+            this.rButtonWizard.TabIndex = 1;
+            this.rButtonWizard.TabStop = true;
+            this.rButtonWizard.Text = "NMT Wizard";
+            this.rButtonWizard.UseVisualStyleBackColor = true;
+            // 
+            // rButtonLua
+            // 
+            this.rButtonLua.AutoSize = true;
+            this.rButtonLua.Location = new System.Drawing.Point(13, 33);
+            this.rButtonLua.Name = "rButtonLua";
+            this.rButtonLua.Size = new System.Drawing.Size(183, 29);
+            this.rButtonLua.TabIndex = 0;
+            this.rButtonLua.TabStop = true;
+            this.rButtonLua.Text = "OpenNMT Lua";
+            this.rButtonLua.UseVisualStyleBackColor = true;
+            this.rButtonLua.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // groupBoxCon
             // 
@@ -116,9 +153,11 @@
             this.groupBoxCon.Controls.Add(this.address_txtbox);
             this.groupBoxCon.Controls.Add(this.label4);
             this.groupBoxCon.Controls.Add(this.label3);
-            this.groupBoxCon.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxCon.Location = new System.Drawing.Point(8, 182);
+            this.groupBoxCon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxCon.Name = "groupBoxCon";
-            this.groupBoxCon.Size = new System.Drawing.Size(413, 134);
+            this.groupBoxCon.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxCon.Size = new System.Drawing.Size(620, 209);
             this.groupBoxCon.TabIndex = 24;
             this.groupBoxCon.TabStop = false;
             this.groupBoxCon.Text = "Connection";
@@ -126,63 +165,104 @@
             // port_txtbox
             // 
             this.port_txtbox.AccessibleName = "server_port";
-            this.port_txtbox.Location = new System.Drawing.Point(118, 61);
-            this.port_txtbox.Margin = new System.Windows.Forms.Padding(4);
+            this.port_txtbox.Location = new System.Drawing.Point(177, 95);
+            this.port_txtbox.Margin = new System.Windows.Forms.Padding(6);
             this.port_txtbox.Name = "port_txtbox";
-            this.port_txtbox.Size = new System.Drawing.Size(113, 22);
+            this.port_txtbox.Size = new System.Drawing.Size(168, 31);
             this.port_txtbox.TabIndex = 16;
             // 
             // address_txtbox
             // 
             this.address_txtbox.AccessibleName = "server_address";
-            this.address_txtbox.Location = new System.Drawing.Point(118, 31);
-            this.address_txtbox.Margin = new System.Windows.Forms.Padding(4);
+            this.address_txtbox.Location = new System.Drawing.Point(177, 48);
+            this.address_txtbox.Margin = new System.Windows.Forms.Padding(6);
             this.address_txtbox.Name = "address_txtbox";
-            this.address_txtbox.Size = new System.Drawing.Size(254, 22);
+            this.address_txtbox.Size = new System.Drawing.Size(379, 31);
             this.address_txtbox.TabIndex = 14;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 61);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(4, 95);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 17);
+            this.label4.Size = new System.Drawing.Size(120, 25);
             this.label4.TabIndex = 17;
             this.label4.Text = "Server Port";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 31);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(4, 48);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 17);
+            this.label3.Size = new System.Drawing.Size(160, 25);
             this.label3.TabIndex = 15;
             this.label3.Text = "Server Address";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.groupBoxFeats);
+            this.tabPage2.Location = new System.Drawing.Point(8, 39);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Size = new System.Drawing.Size(648, 401);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Advanced";
+            // 
             // groupBoxFeats
             // 
+            this.groupBoxFeats.Controls.Add(this.label5);
+            this.groupBoxFeats.Controls.Add(this.rButtonFeatBeg);
+            this.groupBoxFeats.Controls.Add(this.rButtonFeatEnd);
+            this.groupBoxFeats.Controls.Add(this.rButtonFeatTok);
             this.groupBoxFeats.Controls.Add(this.textBoxOtherFeatures);
             this.groupBoxFeats.Controls.Add(this.label2);
             this.groupBoxFeats.Controls.Add(this.textBoxSubject);
             this.groupBoxFeats.Controls.Add(this.label1);
             this.groupBoxFeats.Controls.Add(this.textBoxCustomer);
             this.groupBoxFeats.Controls.Add(this.labelClientName);
-            this.groupBoxFeats.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxFeats.Location = new System.Drawing.Point(9, 9);
+            this.groupBoxFeats.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxFeats.Name = "groupBoxFeats";
-            this.groupBoxFeats.Size = new System.Drawing.Size(413, 145);
+            this.groupBoxFeats.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxFeats.Size = new System.Drawing.Size(635, 382);
             this.groupBoxFeats.TabIndex = 23;
             this.groupBoxFeats.TabStop = false;
             this.groupBoxFeats.Text = "Source Features";
+            this.groupBoxFeats.Enter += new System.EventHandler(this.groupBoxFeats_Enter);
+            // 
+            // textBoxOtherFeatures
+            // 
+            this.textBoxOtherFeatures.AccessibleName = "features";
+            this.textBoxOtherFeatures.Location = new System.Drawing.Point(216, 138);
+            this.textBoxOtherFeatures.Margin = new System.Windows.Forms.Padding(6);
+            this.textBoxOtherFeatures.Name = "textBoxOtherFeatures";
+            this.textBoxOtherFeatures.Size = new System.Drawing.Size(330, 31);
+            this.textBoxOtherFeatures.TabIndex = 23;
+            this.toolTip1.SetToolTip(this.textBoxOtherFeatures, "Type the values in the correct order, separated by a semicolon (;)");
+            this.textBoxOtherFeatures.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 138);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 25);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Other";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBoxSubject
             // 
             this.textBoxSubject.AccessibleName = "server_port";
-            this.textBoxSubject.Location = new System.Drawing.Point(144, 58);
-            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxSubject.Location = new System.Drawing.Point(216, 91);
+            this.textBoxSubject.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxSubject.Name = "textBoxSubject";
-            this.textBoxSubject.Size = new System.Drawing.Size(221, 22);
+            this.textBoxSubject.Size = new System.Drawing.Size(330, 31);
             this.textBoxSubject.TabIndex = 20;
             this.toolTip1.SetToolTip(this.textBoxSubject, "Warning! Only use valid values in these text boxes or the system may not be able " +
         "to translate.");
@@ -190,10 +270,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 58);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(10, 91);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.Size = new System.Drawing.Size(84, 25);
             this.label1.TabIndex = 21;
             this.label1.Text = "Subject";
             this.toolTip2.SetToolTip(this.label1, "Warning! Only use valid values in these text boxes or the system may not be able " +
@@ -202,10 +282,10 @@
             // textBoxCustomer
             // 
             this.textBoxCustomer.AccessibleName = "server_port";
-            this.textBoxCustomer.Location = new System.Drawing.Point(144, 28);
-            this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCustomer.Location = new System.Drawing.Point(216, 44);
+            this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxCustomer.Name = "textBoxCustomer";
-            this.textBoxCustomer.Size = new System.Drawing.Size(221, 22);
+            this.textBoxCustomer.Size = new System.Drawing.Size(330, 31);
             this.textBoxCustomer.TabIndex = 18;
             this.toolTip1.SetToolTip(this.textBoxCustomer, "Warning! Only use valid values in these text boxes or the system may not be able " +
         "to translate.");
@@ -213,55 +293,77 @@
             // labelClientName
             // 
             this.labelClientName.AutoSize = true;
-            this.labelClientName.Location = new System.Drawing.Point(7, 28);
-            this.labelClientName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelClientName.Location = new System.Drawing.Point(10, 44);
+            this.labelClientName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelClientName.Name = "labelClientName";
-            this.labelClientName.Size = new System.Drawing.Size(43, 17);
+            this.labelClientName.Size = new System.Drawing.Size(67, 25);
             this.labelClientName.TabIndex = 19;
             this.labelClientName.Text = "Client";
             this.toolTip2.SetToolTip(this.labelClientName, "Warning! Only use valid values in these text boxes or the system may not be able " +
         "to translate.");
             // 
-            // textBoxOtherFeatures
+            // rButtonFeatTok
             // 
-            this.textBoxOtherFeatures.AccessibleName = "features";
-            this.textBoxOtherFeatures.Location = new System.Drawing.Point(144, 88);
-            this.textBoxOtherFeatures.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxOtherFeatures.Name = "textBoxOtherFeatures";
-            this.textBoxOtherFeatures.Size = new System.Drawing.Size(221, 22);
-            this.textBoxOtherFeatures.TabIndex = 23;
-            this.toolTip1.SetToolTip(this.textBoxOtherFeatures, "Type the values in the correct order, separated by a semicolon (;)");
-            this.textBoxOtherFeatures.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.rButtonFeatTok.AutoSize = true;
+            this.rButtonFeatTok.Location = new System.Drawing.Point(15, 336);
+            this.rButtonFeatTok.Name = "rButtonFeatTok";
+            this.rButtonFeatTok.Size = new System.Drawing.Size(180, 29);
+            this.rButtonFeatTok.TabIndex = 24;
+            this.rButtonFeatTok.TabStop = true;
+            this.rButtonFeatTok.Text = "To each token";
+            this.rButtonFeatTok.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // rButtonFeatEnd
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 88);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 17);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Other";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.rButtonFeatEnd.AutoSize = true;
+            this.rButtonFeatEnd.Location = new System.Drawing.Point(15, 293);
+            this.rButtonFeatEnd.Name = "rButtonFeatEnd";
+            this.rButtonFeatEnd.Size = new System.Drawing.Size(448, 29);
+            this.rButtonFeatEnd.TabIndex = 25;
+            this.rButtonFeatEnd.TabStop = true;
+            this.rButtonFeatEnd.Text = "As separate tokens at the end of sentence";
+            this.rButtonFeatEnd.UseVisualStyleBackColor = true;
+            // 
+            // rButtonFeatBeg
+            // 
+            this.rButtonFeatBeg.AutoSize = true;
+            this.rButtonFeatBeg.Location = new System.Drawing.Point(15, 253);
+            this.rButtonFeatBeg.Name = "rButtonFeatBeg";
+            this.rButtonFeatBeg.Size = new System.Drawing.Size(506, 29);
+            this.rButtonFeatBeg.TabIndex = 26;
+            this.rButtonFeatBeg.TabStop = true;
+            this.rButtonFeatBeg.Text = "As separate tokens at the beginning of sentence";
+            this.rButtonFeatBeg.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 206);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 25);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Add features:";
             // 
             // OpenNMTConfDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 374);
+            this.ClientSize = new System.Drawing.Size(702, 584);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Save_btn);
             this.Controls.Add(this.Cancel_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "OpenNMTConfDialog";
             this.Text = "OpenNMT Configuration";
             this.Load += new System.EventHandler(this.OpenNMTConfDialog_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.groupBoxFramework.ResumeLayout(false);
+            this.groupBoxFramework.PerformLayout();
             this.groupBoxCon.ResumeLayout(false);
             this.groupBoxCon.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.groupBoxFeats.ResumeLayout(false);
             this.groupBoxFeats.PerformLayout();
             this.ResumeLayout(false);
@@ -289,5 +391,12 @@
         private System.Windows.Forms.Label labelClientName;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.GroupBox groupBoxFramework;
+        private System.Windows.Forms.RadioButton rButtonWizard;
+        private System.Windows.Forms.RadioButton rButtonLua;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rButtonFeatBeg;
+        private System.Windows.Forms.RadioButton rButtonFeatEnd;
+        private System.Windows.Forms.RadioButton rButtonFeatTok;
     }
 }

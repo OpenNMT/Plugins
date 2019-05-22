@@ -27,7 +27,7 @@ namespace OpenNMT
         #region "Browse"
         public ITranslationProvider[] Browse(IWin32Window owner, LanguagePair[] languagePairs, ITranslationProviderCredentialStore credentialStore)
         {
-            OpenNMTConfDialog dialog = new OpenNMTConfDialog(new ListTranslationOptions(),languagePairs);
+            OpenNMTConfDialog dialog = new OpenNMTConfDialog(new OpenNMTTranslationOptions(),languagePairs);
             
             if (dialog.ShowDialog(owner) == DialogResult.OK)
             {

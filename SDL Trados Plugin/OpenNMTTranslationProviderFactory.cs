@@ -22,7 +22,7 @@ namespace OpenNMT
                 throw new Exception("Cannot handle URI.");
             }
 
-            OpenNmtProvider tp = new OpenNmtProvider(new ListTranslationOptions(translationProviderUri));
+            OpenNmtProvider tp = new OpenNmtProvider(new OpenNMTTranslationOptions(translationProviderUri));
 
             return tp;
         }
@@ -46,7 +46,7 @@ namespace OpenNMT
             TranslationProviderInfo info = new TranslationProviderInfo();
 
             #region "TranslationMethod"
-            info.TranslationMethod = ListTranslationOptions.ProviderTranslationMethod;
+            info.TranslationMethod = OpenNMTTranslationOptions.ProviderTranslationMethod;
             #endregion
 
             

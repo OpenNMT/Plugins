@@ -11,10 +11,10 @@ namespace OpenNMT
     {
         public RestClient(string serverAddress, int serverPort)
         {
-            uri = "http://" + serverAddress + ":" + Convert.ToString(serverPort) + "/translator/translate";
+            Uri = "http://" + serverAddress + ":" + Convert.ToString(serverPort) + "/translate";
         }
 
-        private enum httpMethod
+        protected enum HttpMethod
         {
             GET,
             POST,
@@ -22,31 +22,42 @@ namespace OpenNMT
             DELETE
         }
 
-        private string uri;
+        protected string Uri { get; set; }
 
-        public string getTranslation(string sourceString, List<string> features)
+        public virtual string GetTranslation(string sourceString, List<string> features, string featurePosition)
         {
             string responseJson = string.Empty;
             string translation = string.Empty;
 
-            List <JsonTranslationResponse> ListJson = new List<JsonTranslationResponse>();
-            JsonTranslationResponse JsonTranslation = new JsonTranslationResponse();
-            
-            JsonTranslation.src = sourceString;
-            JsonTranslation.feats = features;
-            
-            ListJson.Add(JsonTranslation);
+            TextField Source = new TextField
+            {
+                Text = sourceString //+ string.Join("", features.ToArray())
+            };
 
-            string serializedSourceString = JsonConvert.SerializeObject(ListJson);
+            if (featurePosition == "start")
+            {
+                Source.Text = string.Join("", features.ToArray()) + Source.Text;
+            }
+            else if (featurePosition == "end")
+            {
+                Source.Text += string.Join("", features.ToArray());
+            }
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Method = httpMethod.POST.ToString();
+            Request SourceRequest = new Request
+            {
+                SourceText = new TextField[] { Source }
+            };
+
+            string serializedSourceString = JsonConvert.SerializeObject(SourceRequest);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Uri);
+            request.Method = HttpMethod.POST.ToString();
             request.ContentType = "application/json";
-            
+
             //We need to close and open the connection every time to avoid
             //errors with unfinished requests
             request.KeepAlive = false;
-            
+
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 streamWriter.Write(serializedSourceString);
@@ -72,37 +83,104 @@ namespace OpenNMT
                 }
             }
 
-            //We can't deserialize with JsonConvert.DeserializeObject because 
-            //the json returned is a two dimensional array but the json request is 
-            //serialized as a signle-dimensional array
-            JArray jsonTranslation = JArray.Parse(responseJson);
-            translation = jsonTranslation[0][0].SelectToken("tgt").ToString();
+            Response Target = JsonConvert.DeserializeObject<Response>(responseJson);
+
+            translation = Target.TargetText[0][0].Text;
+
             return translation;
         }
     }
 
-
-    //The json returned from the server. We ignore everything except from
-    //src so we can serialize correctly.
-    public class JsonTranslationResponse
+    public class RestClientLua : RestClient
     {
+        public RestClientLua(string ServerAddress, int Port) : base(ServerAddress, Port)
+        {
+            Uri = "http://" + ServerAddress + ":" + Convert.ToString(Port) + "/translator/translate";
+        }
 
-        [JsonIgnore]
-        public string tgt { get; set; }
+        public override string GetTranslation(string sourceString, List<string> features, string featurePosition)
+        {
+            string responseJson = string.Empty;
+            string translation = string.Empty;
 
-        public string src { get; set; }
+            List<RequestLua> ListJson = new List<RequestLua>();
+            RequestLua JsonTranslation = new RequestLua
+            {
+                SourceText = sourceString,
+                Features = features
+            };
 
-        public List<string> feats { get; set; }
+            ListJson.Add(JsonTranslation);
 
-        [JsonIgnore]
-        public float pred_score { get; set; }
-        [JsonIgnore]
-        public int n_best { get; set; }
+            string serializedSourceString = JsonConvert.SerializeObject(ListJson);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Uri);
+            request.Method = HttpMethod.POST.ToString();
+            request.ContentType = "application/json";
+
+            //We need to close and open the connection every time to avoid
+            //errors with unfinished requests
+            request.KeepAlive = false;
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(serializedSourceString);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    throw new Exception("Error code: " + response.StatusCode.ToString());
+                }
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    if (responseStream != null)
+                    {
+                        using (StreamReader reader = new StreamReader(responseStream))
+                        {
+                            responseJson = reader.ReadToEnd();
+                        }
+                    }
+                }
+            }
+
+            JArray jsonTranslation = JArray.Parse(responseJson);
+            translation = jsonTranslation[0][0].SelectToken("tgt").ToString();
+
+            return translation;
+        }
     }
 
-
     
+    public class TextField
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
 
+    public class Request
+    {
+        [JsonProperty("src")]
+        public TextField[] SourceText { get; set; }
+    }
+
+    public class Response
+    {
+        [JsonProperty("tgt")]
+        public TextField[][] TargetText { get; set; }
+    }
+
+    public class RequestLua
+    {
+        [JsonProperty("src")]
+        public string SourceText { get; set; }
+
+        [JsonProperty("feats")]
+        public List<string> Features { get; set; }
+    }
    
 
 }
